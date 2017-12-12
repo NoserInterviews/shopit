@@ -4,7 +4,10 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class CategoryRepository {
@@ -17,25 +20,25 @@ public class CategoryRepository {
 
         topLevel = new ArrayList<>();
 
-        topLevel.add(new Category(UUID.randomUUID().toString(),
+        topLevel.add(new Category("Sauger",
                                   "Sauger",
                                   "Geräte die Luft einsaugen",
-                                  new Category(UUID.randomUUID().toString(),
+                                  new Category("Industriestaubsauger",
                                                "Industriestaubsauger",
                                                "Besonders leistungsfähig"),
-                                  new Category((UUID.randomUUID().toString()),
+                                  new Category("Staubsauger",
                                                "Staubsauger",
                                                "Für private Haushalte geeignet")));
 
-        topLevel.add(new Category(UUID.randomUUID().toString(),
+        topLevel.add(new Category("Mixer",
                                   "Mixer",
                                   "Hier wird gemixt",
-                                  new Category(UUID.randomUUID().toString(),
+                                  new Category("Standmixer",
                                                "Standgeräte",
                                                "Besonders leistungsfähig"),
-                                  new Category((UUID.randomUUID().toString()),
+                                  new Category("Stabmixer",
                                                "Stabmixer",
-                                               "Die handliche Alternatives")));
+                                               "Die handliche Alternative")));
 
         root = new Category("not used",
                             "not used",

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>ShopIt extrem</title>
 </head>
 <body>
@@ -10,6 +10,10 @@
 
 <div th:each="category : ${categories}">
     <span><a th:text="${category.name}" th:href="@{/shop(selected=${category.name})}"/></span>
+</div>
+
+<div th:each="product : ${products}">
+    <span th:text="${product.name}"/>
 </div>
 
 </body>
