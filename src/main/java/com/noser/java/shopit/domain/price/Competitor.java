@@ -51,7 +51,7 @@ public class Competitor {
                                   if (RANDOM.nextDouble() < 0.05) {
                                       EXECUTOR.schedule(() -> {
                                           res.completeExceptionally(new SocketException("Connection reset by peer"));
-                                      }, delay(15_000L, 15_00L), TimeUnit.MILLISECONDS);
+                                      }, delay(1500L, 1500L), TimeUnit.MILLISECONDS);
                                   } else {
                                       EXECUTOR.schedule(() -> {
                                           if (notAvailableProducts.contains(product.getId())) {

@@ -37,4 +37,12 @@ public class Amount implements Comparable<Amount> {
             throw new UnsupportedOperationException("not yet implemented");
         }
     }
+
+    @Override
+    public String toString() {
+
+        return "[" + denominator +
+                " " + currency +
+                ']';
+    }
 }

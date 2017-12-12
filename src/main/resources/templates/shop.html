@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>ShopIt extrem</title>
@@ -16,7 +16,7 @@
 
 <h3>Produkte</h3>
 <div th:each="product : ${products}">
-    <span th:text="${product.name}"/>
+    <span th:text="${product.name}"/> <span th:text="${prices.get(product.getId()).getPrice()}" />
 </div>
 
 </body>
