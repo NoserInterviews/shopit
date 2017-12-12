@@ -67,4 +67,9 @@ public class ProductRepository {
 
         return new ArrayList<>(products.values());
     }
+
+    public Optional<Product> findById(@Nonnull String productId) {
+
+        return Optional.ofNullable(products.get(productId));
+    }
 }
