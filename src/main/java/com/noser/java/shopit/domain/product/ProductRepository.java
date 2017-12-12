@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -60,5 +61,10 @@ public class ProductRepository {
         for (Category subCategory : category.getSubCategories()) {
             findAllCategoryIdsRecursive(inCategoryIds, subCategory);
         }
+    }
+
+    public List<Product> findAll() {
+
+        return new ArrayList<>(products.values());
     }
 }

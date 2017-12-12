@@ -8,10 +8,13 @@
 
 <h1>ShopIt - Der extreme Onlineshop</h1>
 
+<h3>Kategorien</h3>
+<span><a href="/shop">Alle</a></span>
 <div th:each="category : ${categories}">
     <span><a th:text="${category.name}" th:href="@{/shop(selected=${category.name})}"/></span>
 </div>
 
+<h3>Produkte</h3>
 <div th:each="product : ${products}">
     <span th:text="${product.name}"/>
 </div>

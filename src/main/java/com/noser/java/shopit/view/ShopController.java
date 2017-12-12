@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -27,7 +26,7 @@ public class ShopController {
 
         List<Product> products = categoryRepository.findByName(selected)
                                                    .map(productRepository::findByCategory)
-                                                   .orElseGet(Collections::emptyList);
+                                                   .orElseGet(productRepository::findAll);
 
         model.addAttribute("categories", categoryRepository.getTopLevel());
         model.addAttribute("products", products);

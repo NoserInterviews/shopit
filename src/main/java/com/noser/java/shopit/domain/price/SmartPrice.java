@@ -10,7 +10,7 @@ public class SmartPrice {
     private String id;
     private Product product;
     private Amount price;
-    private Map<String, Amount> competitionPrices;
+    private Map<String, CompetitorPrice> competitionPrices;
     private Instant validUntil;
 
 }
