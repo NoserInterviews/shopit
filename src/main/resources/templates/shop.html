@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ShopIt extrem</title>
+</head>
+<body>
+
+<h1>ShopIt - Der extreme Onlineshop</h1>
+
+<div th:each="category : ${categories}">
+    <span><a th:text="${category.name}" th:href="@{/shop(selected=${category.name})}"/></span>
+</div>
+
+</body>
+</html>
