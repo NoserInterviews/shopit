@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ShopIt</title>
+</head>
+<body>
+<form th:action="@{/login}" th:method="post" autocomplete="off">
+    <input id="username" name="username"/>
+    <label for="username" th:text="Benutzername"></label>
+    <input id="password" name="password" type="password"/>
+    <label for="password" th:text="Passwort"></label>
+    <button type="submit" th:text="Anmelden"></button>
+</form>
+</body>
+</html>

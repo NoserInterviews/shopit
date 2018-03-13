@@ -2,6 +2,8 @@ package com.noser.java.shopit.domain.price;
 
 import com.noser.java.shopit.domain.product.Product;
 import com.noser.java.shopit.domain.product.ProductRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +11,16 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Currency;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
 @Service
 public class SmartPriceService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SmartPriceService.class);
 
     @Autowired
     private CompetitorService competitorService;
@@ -34,15 +38,16 @@ public class SmartPriceService {
                 competitorService.findAll()
                                  .stream()
                                  .map(competitor -> competitor.getPrice(product))
-                                 .map(cf -> {
+                                 .flatMap(cf -> {
                                      try {
-                                         return cf.get(30, TimeUnit.SECONDS);
+                                         return cf.get(5, TimeUnit.SECONDS)
+                                                  .map(Stream::of)
+                                                  .orElse(Stream.empty());
                                      } catch (Exception e) {
-                                         e.printStackTrace();
-                                         return null;
+                                         LOGGER.warn("Exception while fetching price: {}", e.getMessage());
+                                         return Stream.empty();
                                      }
                                  })
-                                 .filter(Objects::nonNull)
                                  .collect(toList());
 
         Currency chf = Currency.getInstance("CHF");
