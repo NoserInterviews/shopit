@@ -11,6 +11,7 @@ public class ShopitApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		// just start up the application and see if it works
 	}
 
 }
